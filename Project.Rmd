@@ -84,7 +84,7 @@ prop.table(table(training$classe)) #finding the proportion of each class and plo
 # Building Models  
   
 There are various prediction models in Machine Learning that use the concepts of repression and decision algorithms. We aim to use decision trees, randome forests, linear discriminant analysis and boosting to predict the 20 different cases given in the dataset and apply the most accurate technique on the entire data for further predictions.    
-###Decision Tree  
+### Decision Tree  
   
 Decision Trees don't usually give a high accuracy. Let us see what value we get for the model fit in this case.  
 ```{r, echo=TRUE}
@@ -96,7 +96,7 @@ confusionMatrix(prediction, testing$classe)
   
 We can note that the accuracy of this model is **0.5244**.  
   
-###Random Forest  
+### Random Forest  
 ```{r, echo=TRUE}
 set.seed(233)
 modFit_rf <- randomForest(classe ~ ., data = training, ntree = 100)
@@ -107,7 +107,7 @@ qplot(training$roll_belt, magnet_dumbbell_y, colour=classe, data=training)
   
 The accuray of this model is **0.9976** which means that this method is highly accurate.  
   
-###Linear Discriminant Ananlysis  
+### Linear Discriminant Ananlysis  
   
 ```{r, echo=TRUE}
 modFit_lda<-train(classe~., data=training, method="lda")
@@ -117,7 +117,7 @@ confusionMatrix(prediction, testing$classe)
   
 The accuracy of this model comes upto **0.715** which is greater than that of decision trees but less accurate than the output of Random Forest.  
   
-#Selecting and Applying the appropriate model  
+# Selecting and Applying the appropriate model  
   
 Since the Random Forest Modelling method gives us the most accurate results for the training set we will use it to make predictions in our final model. Given below are the 20 different test cases that are predicted from the model.  
   
